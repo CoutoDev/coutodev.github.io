@@ -1,13 +1,15 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets'
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, carouselImages } = Astro.props;
 ---
 
 <html lang="en">
@@ -77,9 +79,36 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<hr />
 					</div>
 					<slot />
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							{carouselImages?.map((image) => (
+								<div class="swiper-slide">
+									<Image src={image} alt="" height={480} width={960} />
+								</div>
+							))}
+						</div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
 				</div>
 			</article>
 		</main>
 		<Footer />
 	</body>
+	<script>
+		import Swiper from 'swiper';
+		import { Navigation, A11y } from 'swiper/modules';
+		import 'swiper/css';
+		import 'swiper/css/bundle';
+		
+		const swiper = new Swiper('.swiper', {
+			modules: [Navigation, A11y],
+			slidesPerView: 1,
+			zoom: true,
+			navigation: {
+				prevEl: '.swiper-button-prev',
+				nextEl: '.swiper-button-next',
+			},
+		});
+	</script>
 </html>

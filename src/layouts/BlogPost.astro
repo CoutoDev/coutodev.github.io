@@ -9,87 +9,47 @@ import { Image } from 'astro:assets'
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, carouselImages } = Astro.props;
+const { title, description, pubDate, updatedDate, carouselImages } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="bg-gray-900 text-gray-100">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
 	</head>
 
-	<body>
+	<body class="min-h-screen flex flex-col">
 		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
+		<main class="flex-grow container mx-auto px-4 py-8">
+			<article class="max-w-3xl mx-auto">
+				<div class="prose prose-invert prose-green max-w-none">
+					<div class="text-center mb-8">
+						<div class="text-gray-400 font-atkinson mb-4">
 							<FormattedDate date={pubDate} />
 							{
 								updatedDate && (
-									<div class="last-updated-on">
+									<div class="text-sm italic mt-1">
 										Last updated on <FormattedDate date={updatedDate} />
 									</div>
 								)
 							}
 						</div>
-						<h1>{title}</h1>
-						<hr />
+						<h1 class="text-4xl font-bold font-atkinson text-green-400">{title}</h1>
+						<hr class="border-green-500/20 my-6" />
 					</div>
 					<slot />
-					<div class="swiper">
-						<div class="swiper-wrapper">
-							{carouselImages?.map((image) => (
-								<div class="swiper-slide">
-									<Image src={image} alt="" height={480} width={960} />
-								</div>
-							))}
+					{carouselImages && (
+						<div class="swiper mt-8 rounded-lg overflow-hidden">
+							<div class="swiper-wrapper">
+								{carouselImages?.map((image) => (
+									<div class="swiper-slide">
+										<Image src={image} alt="" height={480} width={960} class="w-full h-auto" />
+									</div>
+								))}
+							</div>
+							<div class="swiper-button-prev text-green-400"></div>
+							<div class="swiper-button-next text-green-400"></div>
 						</div>
-						<div class="swiper-button-prev"></div>
-						<div class="swiper-button-next"></div>
-					</div>
+					)}
 				</div>
 			</article>
 		</main>

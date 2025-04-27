@@ -14,10 +14,19 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Atkinson';
   src: url('/fonts/atkinson-bold.woff') format('woff');
   font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mightyline';
+  src: url('/fonts/Mightyline.ttf') format("truetype");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -51,22 +60,17 @@
 .prose h4,
 .prose h5,
 .prose h6 {
-  font-family: 'Atkinson', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  color: #59F22E;
+  font-family: 'Mightyline', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  color: #ffffff;
 }
 
-.prose a {
-  color: #59F22E;
-  transition: color 0.2s ease-in-out;
-}
-
-.prose a:hover {
-  color: #4AD926;
+.prose p {
+  margin-bottom: 1rem;
 }
 
 .prose code {
   background-color: #1a1a1a;
-  color: #59F22E;
+  color: #ffffff;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
@@ -76,15 +80,4 @@
   border: 1px solid rgba(74, 217, 38, 0.2);
   border-radius: 0.5rem;
   padding: 1rem;
-}
-
-.prose blockquote {
-  border-left: 4px solid rgba(74, 217, 38, 0.2);
-  padding-left: 1rem;
-  font-style: italic;
-}
-
-.prose img {
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(74, 217, 38, 0.2);
 }

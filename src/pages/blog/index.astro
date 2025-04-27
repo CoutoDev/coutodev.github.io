@@ -12,29 +12,39 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <!doctype html>
-<html lang="en" class="bg-gray-900 text-gray-100">
+<html lang="en" class="bg-black text-gray-100">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body class="min-h-screen flex flex-col">
 		<Header />
+		
 		<main class="flex-grow container mx-auto px-4 py-8">
 			<section class="max-w-3xl mx-auto">
-				<h2 class="text-3xl font-bold font-atkinson text-white mb-8">Blog Posts</h2>
+				<h2 class="text-2xl font-bold font-atkinson text-fuchsia-700 mb-8"><pre>Articles</pre></h2>
 				<ul class="space-y-6">
 					{
 						posts.map((post) => (
 							<li class="group">
 								<a 
 									href={`/blog/${post.id}/`}
-									class="block p-4 rounded-lg border border-green-500/20 hover:border-green-500/40 hover:bg-gray-800/50 transition-all"
+									class="block p-4 rounded-lg border border-fuchsia-500/20 hover:border-fuchsia-500/40 hover:bg-gray-800/50 transition-all"
 								>
-									<h3 class="text-xl font-atkinson font-bold text-green-400 group-hover:text-green-300 transition-colors">
+									<h3 class="text-xl font-atkinson font-bold text-white group-hover:text-fuchsia-600 transition-colors">
 										{post.data.title}
 									</h3>
 									<p class="text-gray-400 font-atkinson mt-2">
 										<FormattedDate date={post.data.pubDate} />
 									</p>
+									{post.data.tags && (
+										<section class="flex gap-2 flex-wrap">
+											{post.data.tags.map((tag) => (
+											<p class="text-white font-atkinson mt-2 p-2 rounded-lg bg-fuchsia-700/10 hover:bg-fuchsia-700/20 focus:bg-fuchsia-700/20 active:bg-fuchsia-700/20 transition-all w-max">
+												{tag}
+											</p>
+										))}
+										</section>
+									)}
 								</a>
 							</li>
 						))
@@ -43,5 +53,4 @@ const posts = (await getCollection('blog')).sort(
 			</section>
 		</main>
 		<Footer />
-	</body>
 </html>

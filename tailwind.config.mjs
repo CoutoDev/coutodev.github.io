@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         'atkinson': ['Atkinson', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+        'mightyline': ['Mightyline', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       colors: {
         green: {

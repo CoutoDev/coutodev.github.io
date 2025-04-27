@@ -9,10 +9,10 @@ import { Image } from 'astro:assets'
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, carouselImages } = Astro.props;
+const { title, description, pubDate, updatedDate, carouselImages, tags } = Astro.props;
 ---
 
-<html lang="en" class="bg-gray-900 text-gray-100">
+<html lang="en" class="bg-black text-gray-100">
 	<head>
 		<BaseHead title={title} description={description} />
 	</head>
@@ -33,21 +33,32 @@ const { title, description, pubDate, updatedDate, carouselImages } = Astro.props
 								)
 							}
 						</div>
-						<h1 class="text-4xl font-bold font-atkinson text-green-400">{title}</h1>
-						<hr class="border-green-500/20 my-6" />
+						<h1 class="text-6xl font-mightyline text-white uppercase">{title}</h1>
+						{tags && (
+							<section class="flex gap-2 justify-center flex-wrap">
+								{tags.map((tag) => (
+								<p class="text-white font-atkinson mt-2 p-2 rounded-lg bg-fuchsia-700/10 hover:bg-fuchsia-700/20 focus:bg-fuchsia-700/20 active:bg-fuchsia-700/20 transition-all w-max ">
+									{tag}
+								</p>
+							))}
+							</section>
+						)}
+						<hr class="border-fuchsia-500/20 my-6" />
 					</div>
 					<slot />
 					{carouselImages && (
-						<div class="swiper mt-8 rounded-lg overflow-hidden">
-							<div class="swiper-wrapper">
-								{carouselImages?.map((image) => (
-									<div class="swiper-slide">
-										<Image src={image} alt="" height={480} width={960} class="w-full h-auto" />
-									</div>
-								))}
+						<div class="relative">
+							<div class="swiper mt-8 rounded-lg overflow-hidden">
+								<div class="swiper-wrapper">
+									{carouselImages?.map((image) => (
+										<div class="swiper-slide">
+											<Image src={image} alt="" height={480} width={960} class="w-full h-auto" />
+										</div>
+									))}
+								</div>
+								<div class="swiper-button-prev text-fuchsia-700"></div>
+								<div class="swiper-button-next text-fuchsia-700"></div>
 							</div>
-							<div class="swiper-button-prev text-green-400"></div>
-							<div class="swiper-button-next text-green-400"></div>
 						</div>
 					)}
 				</div>
@@ -71,4 +82,5 @@ const { title, description, pubDate, updatedDate, carouselImages } = Astro.props
 			},
 		});
 	</script>
+	
 </html>

@@ -7,12 +7,6 @@ export default {
         'atkinson': ['Atkinson', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
         'mightyline': ['Mightyline', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
-      colors: {
-        green: {
-          400: '#59F22E',
-          500: '#4AD926',
-        },
-      },
     },
   },
   plugins: [

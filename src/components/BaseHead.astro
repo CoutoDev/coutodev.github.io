@@ -6,6 +6,7 @@ import { SITE_TITLE } from '../consts';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);

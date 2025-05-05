@@ -52,7 +52,7 @@ const { title, pubDate, updatedDate, carouselImages, tags } = Astro.props;
 								<div class="swiper-wrapper">
 									{carouselImages?.map((image) => (
 										<div class="swiper-slide">
-											<Image src={image} alt="" height={480} width={960} class="w-full h-auto" />
+											<Image src={image} alt="Carousel Image Content" height={480} width={960} class="w-full h-auto" />
 										</div>
 									))}
 								</div>

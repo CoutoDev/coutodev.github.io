@@ -1,0 +1,17 @@
+---
+title: 'Functions as Chess Pieces'
+pubDate: 'May 12 2025'
+carouselImages: ['/blog/posts/functions/1.jpg', '/blog/posts/functions/2.jpg', '/blog/posts/functions/3.jpg', '/blog/posts/functions/4.jpg', '/blog/posts/functions/5.jpg', '/blog/posts/functions/6.jpg', '/blog/posts/functions/7.jpg', '/blog/posts/functions/8.jpg', '/blog/posts/functions/9.jpg', '/blog/posts/functions/10.jpg']
+tags: ['clean code', 'functions']
+---
+When it comes to chess, we can be quite literal in this term, after all, each piece does indeed go on a square, and also has a well-established limit on what it can and can't do. A knight, for example, always moves in an “L” shape, so don't expect to see it moving diagonally, that would be against the rules of the game. In the same way, a queen moves in all directions, as many squares as she can, but you'll never see her moving in an “L”, after all, it's not her responsibility.
+
+When it comes to software development, we can also apply this “every man for himself” concept, albeit under different names. Examples include the Single Responsibility Principle (S in SOLID) and the Separation of Concerns (SoC).
+
+As descriptive as the names of these design patterns may be (or seem), it's important that we have a clear understanding of what they mean and how they can help us make our code increasingly elegant and readable, as well as efficient and functional.
+
+The single responsibility principle is a design pattern that states that a class, method, microservice or module should only have one responsibility. Or rather, it should have only one reason to change its implementation, and this makes all the difference when we stop to think in terms of responsibility. A microservice that registers students in a school system shouldn't have any changes when we want to change how we calculate their grades, otherwise we would be violating this principle. The right thing to do would be to have another microservice that calculates students' averages.
+
+SoC can also fit into this logic, with the difference that it is generally used more broadly and is not limited to the implementation of the code itself. While SRP is concerned with how a class is implemented, with SoC we are more interested in the context in which that class is found. If it is responsible for rendering elements on the screen, it should be in the View layer, and within the View, it should belong to a specific domain that makes sense for the application in general. And if this class needs some behavior or method that is not directly part of its responsibility, it should seek help from other classes, in other domains (if applicable), or even pass on, to other layers, what is not related to the View layer.
+
+In short, as software developers, in another chess analogy, it is our responsibility to ensure that each piece moves in the way that concerns it, and not in a random and disorganized way. Keeping this in mind on a daily basis is what guarantees both better software in the long term and mental health for you and the others involved in the project.

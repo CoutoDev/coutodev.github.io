@@ -2,14 +2,14 @@ import {  useRef, useState } from 'react';
 import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import PreviewSlider from './Slider/PreviewSlider'
-import FullscreenSlider from './Slider/FullscreenSlider'
+import PreviewSlider from './PreviewSlider'
+import FullscreenSlider from './FullscreenSlider'
 
 interface Props {
   images: string[];
 }
 
-export default function FullscreenSliderModal({ images }: Props) {
+export default function ({ images }: Props) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const previewSwiperRef = useRef<HTMLDivElement>(null);
   const fullscreenSwiperRef = useRef<HTMLDivElement>(null);

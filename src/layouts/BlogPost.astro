@@ -5,7 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import { Image } from 'astro:assets'
+import FullscreenSliderModal from '../components/FullscreenSliderModal.tsx';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -47,40 +47,11 @@ const { title, pubDate, updatedDate, carouselImages, tags } = Astro.props;
 					</div>
 					<slot />
 					{carouselImages && (
-						<div class="relative">
-							<div class="swiper mt-8 rounded-lg overflow-hidden">
-								<div class="swiper-wrapper">
-									{carouselImages?.map((image) => (
-										<div class="swiper-slide">
-											<Image src={image} alt="Carousel Image Content" height={480} width={960} class="w-full h-auto" />
-										</div>
-									))}
-								</div>
-								<div class="swiper-button-prev text-fuchsia-700"></div>
-								<div class="swiper-button-next text-fuchsia-700"></div>
-							</div>
-						</div>
+						<FullscreenSliderModal images={carouselImages} client:only="react" />
 					)}
 				</div>
 			</article>
 		</main>
 		<Footer />
 	</body>
-	<script>
-		import Swiper from 'swiper';
-		import { Navigation, A11y } from 'swiper/modules';
-		import 'swiper/css';
-		import 'swiper/css/bundle';
-		
-		const swiper = new Swiper('.swiper', {
-			modules: [Navigation, A11y],
-			slidesPerView: 1,
-			zoom: true,
-			navigation: {
-				prevEl: '.swiper-button-prev',
-				nextEl: '.swiper-button-next',
-			},
-		});
-	</script>
-	
 </html>

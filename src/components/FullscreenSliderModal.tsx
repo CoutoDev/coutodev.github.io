@@ -20,7 +20,6 @@ export default function FullscreenSliderModal({ images }: Props) {
   const [previewSwiper, setPreviewSwiper] = useState<Swiper | null>(null);
   const [fullscreenSwiper, setFullscreenSwiper] = useState<Swiper | null>(null);
 
-  // Initialize preview slider
   useEffect(() => {
     if (previewSwiperRef.current) {
       const swiper = new Swiper(previewSwiperRef.current, {
@@ -42,7 +41,6 @@ export default function FullscreenSliderModal({ images }: Props) {
     }
   }, []);
 
-  // Initialize fullscreen slider when opened
   useEffect(() => {
     if (isFullscreen && fullscreenSwiperRef.current) {
       const swiper = new Swiper(fullscreenSwiperRef.current, {
@@ -59,7 +57,6 @@ export default function FullscreenSliderModal({ images }: Props) {
         },
       });
       
-      // Sync with preview slider if it exists
       if (previewSwiper) {
         swiper.slideTo(previewSwiper.realIndex);
       }
@@ -79,15 +76,15 @@ export default function FullscreenSliderModal({ images }: Props) {
   };
 
   const closeFullscreen = () => {
-    // Sync back to preview slider before closing
     if (previewSwiper && fullscreenSwiper) {
       previewSwiper.slideTo(fullscreenSwiper.realIndex);
     }
-    setIsFullscreen(false);  };
+
+    setIsFullscreen(false);
+  };
 
   return (
     <>
-      {/* Preview Slider */}
       <div className="relative mt-8">
       <button
           onClick={openFullscreen}
@@ -115,7 +112,6 @@ export default function FullscreenSliderModal({ images }: Props) {
         </div>
       </div>
 
-      {/* Fullscreen Modal */}
       {isFullscreen && (
         <div className="fixed inset-0 bg-black/70 z-50 p-4 w-full h-full">
           <button 
